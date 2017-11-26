@@ -1,0 +1,22 @@
+{
+  "name": "sheet2tab",
+  "homepage": "https://github.com/ZhanruiLiang/sheet2tab",
+  "authors": [
+    "Zhanrui Liang <ray040123@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vexflow": "^1.2.84",
+    "angular": "^1.6.7"
+  }
+}
