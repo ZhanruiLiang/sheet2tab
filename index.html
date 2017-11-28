@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <title>Sheet to Tab</title>
   <script src="bower_components/angular/angular.min.js"></script>
-  <script src="bower_components/vexflow/releases/vexflow-debug.js"></script>
+  <script src="bower_components/vexflow/releases/vexflow-min.js"></script>
   <script src="src/sheet2tab.js"></script>
 </head>
 <body ng-controller="MainCtrl as ctrl">
+  width: <input type="number" name="width" ng-model="ctrl.visopts.width">
+  height: <input type="number" name="height" ng-model="ctrl.visopts.height">
   <vf-canvas id="vfc0" music="ctrl.music" visopts="ctrl.visopts"></vf-canvas>
 </body>

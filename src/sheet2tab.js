@@ -31,6 +31,8 @@ class MainCtrl {
 }
 
 function render(elem, visopts, music) {
+  console.log('render');
+  elem.empty();
   let rawElem = elem[0];
   let renderer = new VF.Renderer(rawElem, VF.Renderer.Backends.SVG);
   renderer.resize(visopts.width, visopts.height);
@@ -38,6 +40,8 @@ function render(elem, visopts, music) {
   ctx.setFont("Arial", 10, "");
   let stave = new VF.Stave(visopts.marginLeft, visopts.marginTop, 400);
   stave.addClef("treble").addTimeSignature("4/4");
+
+  // VF.Formatter.FormatAndDraw(ctx, stave, notes);
   stave.setContext(ctx).draw();
 }
 
@@ -53,9 +57,13 @@ app.directive("vfCanvas", function() {
       visopts: "=",
     },
     link: function(scope, elem, attrs) {
-      let refresh = () => render(elem, scope.visopts, scope.music);
-      scope.$watch('music', refresh);
-      scope.$watch('visopts', refresh);
+      function watchTarget() {
+        return {music: scope.music, visopts: scope.visopts};
+      };
+      function refresh() {
+        render(elem, scope.visopts, scope.music);
+      };
+      scope.$watch(watchTarget, refresh, true);
     },
   };
 });
